@@ -32,7 +32,7 @@ int handle_write_char(char c, char buffer[],
 		buffer[BUFF_SIZE - 1] = '\0';
 		for (i = 0; i < width - 1; i++)
 			buffer[BUFF_SIZE - i - 2] = padd;
-		
+
 		if (flags & F_MINUS)
 			return (write(1, &buffer[0], 1) +
 					write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
@@ -178,7 +178,7 @@ int write_unsgnd(int is_negative, int ind,
 	{
 		for (i = 0; i < width - length; i++)
 			buffer[i] = padd;
-		
+
 		buffer[i] = '\0';
 		if (flags & F_MINUS) /* Asign extra char to left of buffer [buffer>padd]*/
 		{
