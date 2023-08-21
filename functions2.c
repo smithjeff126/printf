@@ -26,30 +26,30 @@ int print_pointer(va_list types, char buffer[],
 	if (addrs == NULL)
 		return (write(1, "(nil)", 5));
 
-		buffer[BUFF_SIZE - 1] = '\0';
-		UNUSED(precision);
+	buffer[BUFF_SIZE - 1] = '\0';
+	UNUSED(precision);
 
-		num_addrs = (unsigned long)addrs;
+	num_addrs = (unsigned long)addrs;
 
-		while (num_addrs > 0)
-		{
-			buffer[ind--] = map_to[num_addrs % 16];
-			num_addrs /= 16;
-			length++;
-		}
+	while (num_addrs > 0)
+	{
+		buffer[ind--] = map_to[num_addrs % 16];
+		num_addrs /= 16;
+		length++;
+	}
 
-		if ((flags & F_ZERO) && !(flags & F_MINUS))
-			padd = '0';
-		if (flags & F_PLUS)
-			extra_c = '+', length++;
-		else if (flags & F_SPACE)
-			extra_c = ' ', length++;
+	if ((flags & F_ZERO) && !(flags & F_MINUS))
+		padd = '0';
+	if (flags & F_PLUS)
+		extra_c = '+', length++;
+	else if (flags & F_SPACE)
+		extra_c = ' ', length++;
 
-		ind++;
+	ind++;
 
-		/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
-		return (write_pointer(buffer, ind, length,
-			width, flags, padd, extra_c, padd_start));
+	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
+	return (write_pointer(buffer, ind, length,
+		width, flags, padd, extra_c, padd_start));
 }
 
 /************************* PRINT NON PRINTABLE *************************/
@@ -183,7 +183,7 @@ int print_rot13string(va_list types, char buffer[],
 		{
 			x = str[i];
 			write(1, &x, 1);
-			count++
+			count++;
 		}
 	}
 	return (count);
